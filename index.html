@@ -82,6 +82,26 @@
   .video-wrapper { position: relative; aspect-ratio: 16/9; background: #000; }
   .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
+  /* VIDEO GRID (múltiplos vídeos por módulo) */
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 900px){ .video-grid { grid-template-columns: 1fr; } }
+  .video-thumb-card { display: flex; flex-direction: column; gap: 10px; text-decoration: none; cursor: pointer; transition: transform 0.2s; }
+  .video-thumb-card:hover { transform: translateY(-2px); }
+  .video-thumb-wrap { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000; border: 1px solid rgba(45,197,180,0.18); }
+  .video-thumb-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .video-thumb-overlay { position: absolute; inset: 0; background: rgba(11,48,64,0.40); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .video-thumb-card:hover .video-thumb-overlay { background: rgba(11,48,64,0.25); }
+  .video-play-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-primary); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(45,197,180,0.35); }
+  .video-label { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.85); text-align: center; line-height: 1.3; }
+
+  /* SECTION DIVIDER (Introdução / Aprofundando) */
+  .section-divider { display: flex; align-items: center; gap: 10px; margin: 16px 0 10px; padding: 0 4px; }
+  .section-divider:first-child { margin-top: 0; }
+  .section-divider span { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal-primary); white-space: nowrap; }
+  .section-divider::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(45,197,180,0.35), rgba(45,197,180,0)); }
+  .section-divider--aprof span { color: #5BD0C2; }
+  .section-divider--aprof::after { background: linear-gradient(90deg, rgba(91,208,194,0.35), rgba(91,208,194,0)); }
+
   /* STEPS CARD */
   .steps-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(45,197,180,0.12); border-radius: 14px; padding: 28px; margin-bottom: 24px; }
   .steps-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal-primary); margin-bottom: 16px; }
@@ -469,6 +489,40 @@ const MODULES = [
       { q: "Como é feito o controle de acesso a documentos na Dias+?", options: ["Cada pessoa solicita acesso individualmente ao gestor quando precisa", "Por grupos de segurança (Estratégico, Operacional, Consulta) — nunca por permissão individual", "Por senha compartilhada da pasta com a equipe", "O acesso é livre para todos os colaboradores da empresa"], correct: 1, feedback: "Correto! Os acessos são sempre por grupos — isso garante organização, rastreabilidade e segurança." },
       { q: "O que acontece com os documentos no SharePoint quando um colaborador é desligado?", options: ["Os arquivos são apagados automaticamente junto com o acesso", "Os arquivos ficam disponíveis para a equipe no SharePoint normalmente", "Os arquivos vão automaticamente para o e-mail do gestor da área", "Os arquivos ficam bloqueados até o RH autorizar o acesso"], correct: 1, feedback: "Exato! É por isso que tudo deve estar no SharePoint — os arquivos pertencem à empresa, não ao colaborador." }
     ]
+  },
+  {
+    id:7, tag:"Aprofundando — Módulo 1", title:"AUTOMAÇÕES NO", titleHighlight:"Microsoft 365",
+    subtitle:"Elimine tarefas repetitivas e conecte seus apps com Power Automate",
+    icon:"⚡", videoId:null, videoLabel:null,
+    videos: [
+      { id:"k57Nt87qJ8A", label:"Aula 1 — Introdução ao Power Automate", thumb:"https://img.youtube.com/vi/k57Nt87qJ8A/hqdefault.jpg" },
+      { id:"xE_QaUj2hok", label:"Aula 2 — Listas e Bibliotecas", thumb:"https://img.youtube.com/vi/xE_QaUj2hok/hqdefault.jpg" },
+      { id:"cdwegL7ZEDg", label:"Aula 3 — Criando Automações", thumb:"https://img.youtube.com/vi/cdwegL7ZEDg/hqdefault.jpg" }
+    ],
+    intro: {
+      heading: "Automatize sem precisar programar",
+      body: "O Power Automate é a ferramenta do Microsoft 365 que permite criar fluxos automáticos entre apps — sem escrever uma linha de código. Notificações, aprovações, cópias de arquivos e muito mais, tudo acontecendo sozinho enquanto você foca no que realmente importa.",
+      body2: "Neste módulo você vai aprender desde os conceitos básicos até a criação de automações reais com listas do SharePoint, e-mails do Outlook e mensagens no Teams.",
+      benefits: [
+        { icon: "⏱️", title: "Economize tempo", desc: "Elimine tarefas manuais repetitivas que tomam minutos do seu dia — todo dia." },
+        { icon: "🔗", title: "Conecte seus apps", desc: "Teams, Outlook, SharePoint, Excel e centenas de outros apps trabalhando juntos automaticamente." },
+        { icon: "🖱️", title: "Sem programação", desc: "Interface visual de arrastar e soltar — qualquer pessoa consegue criar seu primeiro fluxo." },
+        { icon: "📊", title: "Monitore tudo", desc: "Acompanhe execuções, erros e histórico dos seus fluxos em um painel centralizado." }
+      ]
+    },
+    steps: [
+      "Acesse o Power Automate em flow.microsoft.com ou pelo menu de apps do Microsoft 365",
+      "Clique em 'Criar' e escolha entre fluxo automatizado, instantâneo ou agendado",
+      "Selecione o gatilho — o evento que vai disparar a automação (ex: receber um e-mail, criar um item em uma lista)",
+      "Adicione as ações que devem acontecer em seguida (ex: enviar mensagem no Teams, salvar arquivo no SharePoint)",
+      "Configure os detalhes de cada ação usando os dados dinâmicos do gatilho",
+      "Clique em 'Teste' para validar o fluxo antes de publicar",
+      "Salve e ative — a partir daí o fluxo roda automaticamente, sem você precisar fazer nada"
+    ],
+    quiz: [
+      { q: "Qual é o nome da ferramenta do Microsoft 365 usada para criar automações sem programação?", options: ["Power BI", "Power Automate", "Power Apps", "Microsoft Flow Studio"], correct: 1, feedback: "Correto! O Power Automate (anteriormente chamado Microsoft Flow) é a ferramenta do M365 para criar fluxos automáticos entre aplicativos, sem necessidade de programação." },
+      { q: "O que é um 'gatilho' em um fluxo do Power Automate?", options: ["O resultado final da automação", "Um erro que interrompe o fluxo", "O evento que inicia a execução do fluxo automaticamente", "O botão de salvar o fluxo"], correct: 2, feedback: "Isso mesmo! O gatilho é o evento que dispara o fluxo — por exemplo: receber um e-mail, criar um item em uma lista do SharePoint ou receber uma mensagem no Teams." }
+    ]
   }
 ];
 
@@ -505,7 +559,19 @@ function updateProgress(){
 }
 
 function renderNav(){
-  document.getElementById("moduleNav").innerHTML=MODULES.map(m=>`
+  const APROFUNDANDO_START = 7; // primeiro módulo da seção "Aprofundando"
+  const parts = [];
+  let introOpened = false, aprofOpened = false;
+  MODULES.forEach(m => {
+    if(!introOpened){
+      parts.push('<div class="section-divider"><span>Introdução</span></div>');
+      introOpened = true;
+    }
+    if(!aprofOpened && m.id >= APROFUNDANDO_START){
+      parts.push('<div class="section-divider section-divider--aprof"><span>Aprofundando</span></div>');
+      aprofOpened = true;
+    }
+    parts.push(`
     <div class="module-nav-item ${currentModule===m.id?"active":""} ${progress[m.id]?"completed":""}" onclick="showModule(${m.id})">
       <div class="module-nav-num">${progress[m.id]?"✓":m.id}</div>
       <div class="module-nav-text">
@@ -513,7 +579,9 @@ function renderNav(){
         <div class="module-nav-tag">${m.tag}</div>
       </div>
       <div class="quiz-badge">Q</div>
-    </div>`).join("");
+    </div>`);
+  });
+  document.getElementById("moduleNav").innerHTML = parts.join("");
 }
 
 function showWelcome(){
@@ -568,9 +636,24 @@ function showModule(id){
       ${buildBenefitGrid(m.intro.benefits)}
     </div>`;
 
-  const videoHtml=m.videoId?`
+  let videoHtml="";
+  if(m.videos && m.videos.length>0){
+    videoHtml = `<div class="video-grid">${m.videos.map(v=>`
+      <a class="video-thumb-card" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+        <div class="video-thumb-wrap">
+          <img src="${v.thumb}" alt="${v.label}">
+          <div class="video-thumb-overlay">
+            <div class="video-play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polygon points="6,3 20,12 6,21" fill="#0B3040"/></svg>
+            </div>
+          </div>
+        </div>
+        <span class="video-label">${v.label}</span>
+      </a>`).join("")}</div>`;
+  } else if(m.videoId){
+    videoHtml = `
     <div class="video-section" style="cursor:pointer;position:relative;border-radius:14px;overflow:hidden;margin-bottom:24px;border:1px solid rgba(45,197,180,0.15);" onclick="window.open('https://www.youtube.com/watch?v=${m.videoId}','_blank')">
-      <img src="https://img.youtube.com/vi/${m.videoId}/maxresdefault.jpg" 
+      <img src="https://img.youtube.com/vi/${m.videoId}/maxresdefault.jpg"
         onerror="this.src='https://img.youtube.com/vi/${m.videoId}/hqdefault.jpg'"
         style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;">
       <div style="position:absolute;inset:0;background:rgba(11,48,64,0.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:background 0.2s;"
@@ -582,7 +665,8 @@ function showModule(id){
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.85)">${m.videoLabel}</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px">Clique para assistir no YouTube</div>
       </div>
-    </div>`:"";
+    </div>`;
+  }
 
   const govHtml=m.govCards?`
     <div class="gov-card">
